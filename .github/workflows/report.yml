@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Generate Report
-        run: cargo run --package aoc --bin aoc > report.log
+        run: cargo run --package aoc --bin aoc --release > report.log
       - name: Upload Report
         uses: actions/upload-artifact@v3
         with:
