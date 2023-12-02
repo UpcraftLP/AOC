@@ -1,7 +1,7 @@
 use crate::util::read_inputs;
 use anyhow::Result;
 
-pub fn run() -> Result<()> {
+pub(crate) fn run() -> Result<()> {
     let inputs = read_inputs(1)?;
     let mut result = 0;
     for line in &inputs {
