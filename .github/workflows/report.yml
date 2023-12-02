@@ -1,0 +1,24 @@
+name: Create Report
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - README.md
+      - .github/**
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate Report
+        run: cargo run --package aoc --bin aoc > report.log
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: Report
+          path: report.log
