@@ -22,3 +22,5 @@ jobs:
         with:
           name: Report
           path: report.log
+      - name: Print Report
+        run: cat report.log
