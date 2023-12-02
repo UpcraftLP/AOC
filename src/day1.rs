@@ -3,14 +3,9 @@ use anyhow::Result;
 
 pub(crate) fn run() -> Result<()> {
     let inputs = read_inputs(1)?;
-    let mut result = 0;
+    let mut result: i32 = 0;
     for line in &inputs {
-        let mut chars: Vec<char> = Vec::new();
-        for c in line.chars().into_iter() {
-            if c.is_ascii_digit() {
-                chars.push(c);
-            }
-        }
+        let chars: Vec<char> = line.chars().filter(|c| c.is_ascii_digit()).collect();
 
         let first = chars.first().unwrap();
         let last = chars.last().unwrap();
@@ -18,6 +13,7 @@ pub(crate) fn run() -> Result<()> {
         let num: i32 = format!("{first}{last}").parse()?;
         result += num;
     }
+
     println!("Day 1 Part 1: {result}");
 
     // ---------------------------------------
