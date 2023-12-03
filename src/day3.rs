@@ -41,7 +41,7 @@ pub(crate) fn run() -> Result<()> {
                 continue 'y;
             }
 
-            'x: for x in pos.1 as i32 - max_part_number_length ..pos.1 as i32 + 2 {
+            'x: for x in pos.1 as i32 - max_part_number_length..pos.1 as i32 + 2 {
                 if x < 0 {
                     continue 'x;
                 }
@@ -76,7 +76,7 @@ pub(crate) fn run() -> Result<()> {
                 continue 'y;
             }
 
-            'x: for x in pos.1 as i32 - max_part_number_length ..pos.1 as i32 + 2 {
+            'x: for x in pos.1 as i32 - max_part_number_length..pos.1 as i32 + 2 {
                 if x < 0 {
                     continue 'x;
                 }
