@@ -17,7 +17,6 @@ pub(crate) fn run() -> Result<()> {
     println!("Day 1 Part 1: {result}");
 
     // ---------------------------------------
-
     result = 0;
 
     let words = vec![
