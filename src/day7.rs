@@ -1,6 +1,5 @@
 use std::cmp::Ordering;
 use std::collections::HashMap;
-use std::fmt::{Display, Formatter, Write};
 use std::str::FromStr;
 use anyhow::Result;
 use crate::util::read_inputs;
@@ -77,7 +76,7 @@ fn sort(a: &Hand, b: &Hand, ordering: [Card; 13]) -> Ordering {
 
 pub(crate) fn run() -> Result<()> {
     let inputs = read_inputs(7)?;
-    let mut result: i32 = 0;
+    let mut result: i32;
 
     let mut hands: Vec<(Hand, u32)> = inputs.iter().filter(|x| !x.is_empty()).filter_map(|x| x.split_once(' ')).map(|split| {
         let cards = split.0.chars().filter_map(|x| x.to_string().parse::<Card>().ok()).collect::<Vec<Card>>();
@@ -135,12 +134,11 @@ pub(crate) fn run() -> Result<()> {
 
     hands.sort_unstable_by(|(a, _), (b, _)| sort(a, b, ordering));
 
-    result = hands.iter().rev().enumerate().map(|(i, (hand, bid))| (i as u32 + 1) * bid).sum::<u32>() as i32;
+    result = hands.iter().rev().enumerate().map(|(i, (_, bid))| (i as u32 + 1) * bid).sum::<u32>() as i32;
 
     println!("Day 7 Part 1: {result}");
 
     // ---------------------------------------
-    result = 0;
 
     hands = inputs.iter().filter(|x| !x.is_empty()).filter_map(|x| x.split_once(' ')).map(|split| {
         let cards = split.0.chars().filter_map(|x| x.to_string().parse::<Card>().ok()).collect::<Vec<Card>>();
@@ -204,7 +202,7 @@ pub(crate) fn run() -> Result<()> {
 
     hands.sort_unstable_by(|(a, _), (b, _)| sort(a, b, ordering));
 
-    result = hands.iter().rev().enumerate().map(|(i, (hand, bid))| (i as u32 + 1) * bid).sum::<u32>() as i32;
+    result = hands.iter().rev().enumerate().map(|(i, (_, bid))| (i as u32 + 1) * bid).sum::<u32>() as i32;
 
     println!("Day 7 Part 2: {result}");
 

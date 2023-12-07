@@ -5,7 +5,7 @@ use crate::util::read_inputs;
 
 pub(crate) fn run() -> Result<()> {
     let inputs = read_inputs(5)?;
-    let mut result: i64 = 0;
+    let mut result: i64;
 
     let map_names = vec![
         "seed-to-soil",
