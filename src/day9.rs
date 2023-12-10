@@ -8,15 +8,13 @@ pub(crate) fn run() -> Result<()> {
     let mut result: i32;
 
     let sequences: Vec<Vec<Vec<i32>>> = inputs.par_iter().filter(|&l| !l.trim().is_empty()).map(|line| {
-        let numbers: Vec<i32> = line.split_whitespace().filter_map(|s| s.parse::<i32>().ok()).collect();
+        let numbers: Vec<i32> = line.split_whitespace().map(|s| s.parse::<i32>().unwrap()).collect();
         let mut all: Vec<Vec<i32>> = Vec::new();
         all.push(numbers);
         let mut row_idx = 0;
         loop {
             let row = all.get(row_idx).unwrap();
-            if row.len() < 2 {
-                panic!("parsing error, expected at least 2 values, got {:?} for input {:?}", row, line);
-            }
+            assert!(row.len() > 1, "parsing error, expected at least 2 values, got {:?} for input {:?}", row, line);
 
             if row.iter().all(|&x| x == 0) {
                 break;
@@ -32,8 +30,7 @@ pub(crate) fn run() -> Result<()> {
     }).collect();
 
     result = sequences.par_iter().map(|seq| {
-        let mut additions: Vec<i32> = Vec::new();
-        additions.push(0);
+        let mut additions: Vec<i32> = vec![0];
         for row in seq.iter().rev() {
             let last_value = additions.last().unwrap();
             let current = row.last().unwrap();

@@ -5,8 +5,8 @@ pub(crate) fn run() -> Result<()> {
     let inputs = read_inputs(6)?;
     let mut result: i32 = 1;
 
-    let mut times = inputs.iter().find(|&x| x.starts_with("Time:")).unwrap().split_whitespace().skip(1).filter_map(|x| x.parse::<i32>().ok());
-    let mut distances = inputs.iter().find(|&x| x.starts_with("Distance:")).unwrap().split_whitespace().skip(1).filter_map(|x| x.parse::<i32>().ok());
+    let mut times = inputs.iter().find(|&x| x.starts_with("Time:")).unwrap().split_whitespace().skip(1).map(|x| x.parse::<i32>().unwrap());
+    let mut distances = inputs.iter().find(|&x| x.starts_with("Distance:")).unwrap().split_whitespace().skip(1).map(|x| x.parse::<i32>().unwrap());
 
     while let Some(time) = times.next() {
         let current_distance_record = distances.next().expect("Distance record not found");

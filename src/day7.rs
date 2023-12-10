@@ -79,7 +79,7 @@ pub(crate) fn run() -> Result<()> {
     let mut result: i32;
 
     let mut hands: Vec<(Hand, u32)> = inputs.iter().filter(|x| !x.is_empty()).filter_map(|x| x.split_once(' ')).map(|split| {
-        let cards = split.0.chars().filter_map(|x| x.to_string().parse::<Card>().ok()).collect::<Vec<Card>>();
+        let cards = split.0.chars().map(|x| x.to_string().parse::<Card>().unwrap()).collect::<Vec<Card>>();
         let bid = split.1.parse::<u32>().unwrap();
 
         let mut map: HashMap<Card, u8> = HashMap::new();
