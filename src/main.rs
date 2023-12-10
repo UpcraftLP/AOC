@@ -1,3 +1,5 @@
+use anyhow::Result;
+
 mod util;
 mod day1;
 mod day2;
@@ -7,8 +9,6 @@ mod day5;
 mod day6;
 mod day7;
 mod day8;
-
-use anyhow::Result;
 mod day9;
 
 fn main() -> Result<()> {

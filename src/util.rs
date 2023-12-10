@@ -1,4 +1,5 @@
 use std::fs;
+
 use anyhow::Result;
 
 pub fn read_inputs(day: i8) -> Result<Vec<String>> {
