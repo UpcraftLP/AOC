@@ -36,7 +36,8 @@ pub(crate) fn run() -> Result<()> {
             continue;
         }
 
-        let values: Vec<i64> = line.split_whitespace().map(|s| s.parse::<i64>().unwrap()).collect();
+        // use filter_map to ignore labels
+        let values: Vec<i64> = line.split_whitespace().filter_map(|s| s.parse::<i64>().ok()).collect();
 
         if start == "seeds:" {
             seeds_opt = Some(values);
