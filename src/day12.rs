@@ -1,5 +1,5 @@
 use anyhow::Result;
-use indicatif::{MultiProgress, ParallelProgressIterator, ProgressBar, ProgressIterator};
+use indicatif::{ProgressBar, ProgressIterator};
 use itertools::Itertools;
 use rayon::prelude::*;
 
@@ -78,9 +78,8 @@ fn get_arrangements(inputs: &Vec<String>, repeat: usize) -> usize {
 pub(crate) fn run() -> Result<()> {
 
     let inputs = read_inputs(12)?;
-    let mut result: usize = 0;
 
-    result = get_arrangements(&inputs, 1);
+    let mut result = get_arrangements(&inputs, 1);
 
     println!("Day 12 Part 1: {result}");
 
