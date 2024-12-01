@@ -1,11 +1,9 @@
 name: Create Report
 on:
   push:
-    branches:
-      - main
+    branches: [ "*"]
     paths-ignore:
       - README.md
-      - .github/**
 
 env:
   CARGO_TERM_COLOR: always
@@ -18,7 +16,7 @@ jobs:
       - name: Generate Report
         run: cargo run --package aoc --bin aoc --release > report.log
       - name: Upload Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Report
           path: report.log
