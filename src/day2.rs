@@ -35,7 +35,7 @@ pub(crate) fn run() -> Result<()> {
             result_2 += 1;
         } else {
             // part 2:
-            'outer: for n in 0..current_report.len() {
+            for n in 0..current_report.len() {
                 let nums = current_report
                     .iter()
                     .enumerate()
@@ -45,7 +45,7 @@ pub(crate) fn run() -> Result<()> {
 
                 if is_valid_sequence(&nums) {
                     result_2 += 1;
-                    break 'outer;
+                    break;
                 }
             }
         }
