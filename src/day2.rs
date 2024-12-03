@@ -51,11 +51,11 @@ pub(crate) fn run() -> Result<()> {
         }
     }
 
-    println!("Day 1 Part 1: {result_1}");
+    println!("Day 2 Part 1: {result_1}");
 
     // ---------------------------------------
 
-    println!("Day 1 Part 2: {result_2}");
+    println!("Day 2 Part 2: {result_2}");
 
     Ok(())
 }
