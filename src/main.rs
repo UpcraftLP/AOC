@@ -3,6 +3,7 @@ use anyhow::Result;
 mod util;
 //---------
 mod day1;
+mod day10;
 mod day2;
 mod day3;
 mod day4;
@@ -22,5 +23,6 @@ fn main() -> Result<()> {
     day7::run()?;
     day8::run()?;
     day9::run()?;
+    day10::run()?;
     Ok(())
 }
