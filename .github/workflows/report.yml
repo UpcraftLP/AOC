@@ -1,7 +1,7 @@
 name: Create Report
 on:
   push:
-    branches: [ "*"]
+    branches: [ "*" ]
     paths-ignore:
       - README.md
 
@@ -10,15 +10,21 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+
+      - name: Set up rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
       - name: Generate Report
         run: cargo run --package aoc --bin aoc --release > report.log
+
       - name: Upload Report
         uses: actions/upload-artifact@v4
         with:
           name: Report
           path: report.log
+
       - name: Print Report
         run: cat report.log
