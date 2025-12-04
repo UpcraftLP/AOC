@@ -36,7 +36,8 @@ pub(crate) fn run() -> Result<()> {
     let result = grid
         .iter()
         .filter(|&(_, tile)| *tile == Tile::Blocked)
-        .filter(|&(pos, _)| {
+        .map(|(pos, _)| *pos)
+        .filter(|pos| {
             (-1i16..=1i16)
                 .flat_map(|x| (-1i16..=1i16).map(move |y| (x, y)))
                 .map(|offset| (pos.0 + offset.0, pos.1 + offset.1))
@@ -56,7 +57,7 @@ pub(crate) fn run() -> Result<()> {
     loop {
         let to_remove: HashSet<(i16, i16)> = grid
             .iter()
-            .filter(|(_, tile)| **tile == Tile::Blocked)
+            .filter(|&(_, tile)| *tile == Tile::Blocked)
             .map(|(pos, _)| *pos)
             .filter(|pos| {
                 (-1i16..=1i16)
@@ -66,7 +67,8 @@ pub(crate) fn run() -> Result<()> {
                     .filter(|&elem| *elem == Tile::Blocked)
                     .count()
                     < 5
-            }).collect();
+            })
+            .collect();
 
         if to_remove.is_empty() {
             break;
