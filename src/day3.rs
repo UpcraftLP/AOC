@@ -34,7 +34,7 @@ pub(crate) fn run() -> Result<()> {
         })
         .sum();
 
-    println!("Day 2 Part 1: {result}");
+    println!("Day 3 Part 1: {result}");
 
     // ---------------------------------------
 
@@ -58,7 +58,7 @@ pub(crate) fn run() -> Result<()> {
         })
         .sum();
 
-    println!("Day 2 Part 2: {result}");
+    println!("Day 3 Part 2: {result}");
 
     Ok(())
 }
