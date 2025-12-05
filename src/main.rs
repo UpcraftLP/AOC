@@ -7,6 +7,7 @@ mod day1;
 mod day2;
 mod day3;
 mod day4;
+mod day5;
 
 fn main() -> Result<()> {
     env_logger::init_from_env(Env::default().default_filter_or("info"));
@@ -14,5 +15,6 @@ fn main() -> Result<()> {
     day2::run()?;
     day3::run()?;
     day4::run()?;
+    day5::run()?;
     Ok(())
 }
